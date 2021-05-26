@@ -6,10 +6,14 @@ import article5 from "../DB/article-5.json";
 
 async function getNewsTitles(category) {
   const dbResponse = [article1, article2, article3, article4, article5];
-  const newsTitles = await dbResponse.map((individualNew) => {
-    return individualNew.title;
-  });
-  return newsTitles;
+  try {
+    const newsTitles = await dbResponse.map((individualNew) => {
+      return individualNew.title;
+    });
+    return newsTitles;
+  } catch (error) {
+    return { error: "Error loading titles" };
+  }
 }
 
 export default getNewsTitles;

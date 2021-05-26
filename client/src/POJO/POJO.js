@@ -1,6 +1,7 @@
 class Db {
   constructor() {
     this._newsTitle = [];
+    this._newsTitleError = undefined;
   }
 }
 
