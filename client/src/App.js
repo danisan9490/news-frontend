@@ -1,16 +1,8 @@
-import { useEffect } from "react";
-
 import ContinueReading from "./components/ContinueReading/ContinueReading";
 import Main from "./components/Main/Main";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
-import getNewsTitles from "./useCases/getNewsTitles";
-
 function App() {
-  useEffect(() => {
-    getNewsTitles("category");
-  }, []);
-
   return (
     <BrowserRouter>
       <div className="px-3 py-2 fixed-top shadow bg-primary d-flex dlex-row">

@@ -1,6 +1,6 @@
 class Db {
   constructor() {
-    this._currentNews = { test: "test" };
+    this._newsTitle = [];
   }
 }
 
