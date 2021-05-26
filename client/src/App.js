@@ -7,14 +7,14 @@ function App() {
     <BrowserRouter>
       <div className="px-3 py-2 fixed-top shadow bg-primary d-flex dlex-row">
         <div className="formContainer">
-          <Link to="/" className="my-2">
+          <Link to="/" className="m-1">
             <button type="button" className="btn btn-primary">
               <i class="fas fa-home"></i> Main
             </button>
           </Link>
         </div>
         <div className="formContainer">
-          <Link to="/continueReading" className="my-2">
+          <Link to="/continueReading" className="m-1">
             <button type="button" className="btn btn-primary">
               <i class="fas fa-book-reader"></i> Continue Reading
             </button>
