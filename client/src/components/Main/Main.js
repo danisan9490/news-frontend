@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-//Components
+//UseCases
 import getNewsTitles from "../../useCases/getNewsTitles";
 //helpers
 import db from "../../POJO/POJO";
