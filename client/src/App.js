@@ -3,8 +3,12 @@ import Article from "./components/Article/Article";
 import Main from "./components/Main/Main";
 //Helpers
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import db from "./POJO/POJO";
+import useObserver from "pojo-observer";
 
 function App() {
+  useObserver(db);
+
   return (
     <BrowserRouter>
       <div className="min-vh-100 bg-light d-flex flex-fill flex-column justify-content-between ">
@@ -16,13 +20,17 @@ function App() {
               </button>
             </Link>
           </div>
-          <div className="formContainer">
-            <Link to="/article" className="m-1">
-              <button type="button" className="btn btn-primary">
-                <i className="fas fa-book-reader"></i> Continue Reading
-              </button>
-            </Link>
-          </div>
+          {db._articleReadingID ? (
+            <div className="formContainer">
+              <Link to={`/article/${db._articleReadingID}`} className="m-1">
+                <button type="button" className="btn btn-primary">
+                  <i className="fas fa-book-reader"></i> Continue Reading
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="flex-fill my-3">
           <Switch>
