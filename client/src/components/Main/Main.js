@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 //UseCases
-import getNewsTitles from "../../useCases/getNewsTitles";
+import getArticlesTitles from "../../useCases/getArticlesTitles";
 //helpers
 import db from "../../POJO/POJO";
 import useObserver from "pojo-observer";
@@ -12,7 +12,7 @@ function Main() {
   useObserver(db);
 
   useEffect(() => {
-    getNewsTitles("category").then((data) => {
+    getArticlesTitles("category").then((data) => {
       if (data.error) {
         db._newsTitleError = data.error;
       } else {

@@ -4,7 +4,7 @@ import article3 from "../DB/article-3.json";
 import article4 from "../DB/article-4.json";
 import article5 from "../DB/article-5.json";
 
-async function getNewsTitles(category) {
+async function getArticlesTitles(category) {
   const dbResponse = [article1, article2, article3, article4, article5];
   try {
     const newsTitles = await dbResponse.map((individualNew) => {
@@ -19,4 +19,4 @@ async function getNewsTitles(category) {
   }
 }
 
-export default getNewsTitles;
+export default getArticlesTitles;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 //UseCases
-import getIndividualArticles from "../../useCases/getIndividualNews";
+import getIndividualArticles from "../../useCases/getIndividualArticles";
 import getPreviousArticle from "../../useCases/getPreviousArticle";
 import getNextArticle from "../../useCases/getNextArticle";
 //Helpers
