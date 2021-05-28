@@ -6,6 +6,12 @@ class Db {
     this._articleReadingID = "";
     this._articleReading = [];
     this._articleReadingError = undefined;
+
+    this._nextArticle = [];
+    this._nextArticleError = undefined;
+
+    this._prevArticle = [];
+    this._prevArticleError = undefined;
   }
 }
 

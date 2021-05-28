@@ -26,10 +26,21 @@ function Article() {
 
     // preload next and previous articles
     getNextArticle(articleId).then((data) => {
-      console.log(data);
+      if (data.error) {
+        db._nextArticle = data.error;
+      } else {
+        db._nextArticleError = undefined;
+        db._nextArticle = data;
+      }
+      db._nextArticle = data;
     });
     getPreviousArticle(articleId).then((data) => {
-      console.log(data);
+      if (data.error) {
+        db._prevArticle = data.error;
+      } else {
+        db._prevArticleError = undefined;
+        db._prevArticle = data;
+      }
     });
   }, [articleId]);
 
