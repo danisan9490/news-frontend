@@ -5,28 +5,30 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <div className="px-3 py-2 fixed-top shadow bg-primary d-flex dlex-row">
-        <div className="formContainer">
-          <Link to="/" className="m-1">
-            <button type="button" className="btn btn-primary">
-              <i className="fas fa-home"></i> Main
-            </button>
-          </Link>
+      <div className="min-vh-100 bg-light d-flex flex-fill flex-column justify-content-between ">
+        <div className="px-3 py-2 shadow bg-primary d-flex dlex-row">
+          <div className="formContainer">
+            <Link to="/" className="m-1">
+              <button type="button" className="btn btn-primary">
+                <i className="fas fa-home"></i> Main
+              </button>
+            </Link>
+          </div>
+          <div className="formContainer">
+            <Link to="/continueReading" className="m-1">
+              <button type="button" className="btn btn-primary">
+                <i className="fas fa-book-reader"></i> Continue Reading
+              </button>
+            </Link>
+          </div>
         </div>
-        <div className="formContainer">
-          <Link to="/continueReading" className="m-1">
-            <button type="button" className="btn btn-primary">
-              <i className="fas fa-book-reader"></i> Continue Reading
-            </button>
-          </Link>
+        <div className="flex-fill my-3">
+          <Switch>
+            <Route path="/" component={Main} exact />
+            <Route path="/continueReading" component={ContinueReading} />
+          </Switch>
         </div>
-      </div>
-
-      <div className="my-5 pt-4">
-        <Switch>
-          <Route path="/" component={Main} exact />
-          <Route path="/continueReading" component={ContinueReading} />
-        </Switch>
+        <footer class="p-5 bg-dark text-white">Footer</footer>
       </div>
     </BrowserRouter>
   );
