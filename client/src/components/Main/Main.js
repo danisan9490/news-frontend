@@ -12,6 +12,7 @@ function Main() {
   useObserver(db);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getArticlesTitles("category").then((data) => {
       if (data.error) {
         db._newsTitleError = data.error;

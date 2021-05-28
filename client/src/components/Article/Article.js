@@ -16,6 +16,7 @@ function Article() {
   const [prevArticleId, setPrevArticleId] = useState("");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     db._articleReadingID = articleId;
 
     // check if we have next or prev
