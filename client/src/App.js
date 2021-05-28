@@ -1,4 +1,4 @@
-import ContinueReading from "./components/ContinueReading/ContinueReading";
+import Article from "./components/Article/Article";
 import Main from "./components/Main/Main";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
@@ -15,7 +15,7 @@ function App() {
             </Link>
           </div>
           <div className="formContainer">
-            <Link to="/continueReading" className="m-1">
+            <Link to="/article" className="m-1">
               <button type="button" className="btn btn-primary">
                 <i className="fas fa-book-reader"></i> Continue Reading
               </button>
@@ -25,7 +25,7 @@ function App() {
         <div className="flex-fill my-3">
           <Switch>
             <Route path="/" component={Main} exact />
-            <Route path="/continueReading" component={ContinueReading} />
+            <Route path="/article/:id" component={Article} />
           </Switch>
         </div>
         <footer class="p-5 bg-dark text-white">Footer</footer>

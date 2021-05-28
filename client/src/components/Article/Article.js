@@ -1,7 +1,7 @@
 import React from "react";
 
-function ContinueReading() {
+function Article() {
   return <div>Continue Reading</div>;
 }
 
-export default ContinueReading;
+export default Article;
