@@ -5,6 +5,9 @@ import getNewsTitles from "../../useCases/getNewsTitles";
 import db from "../../POJO/POJO";
 import useObserver from "pojo-observer";
 
+//styles
+import "./main.css";
+
 function Main() {
   useObserver(db);
 
@@ -13,6 +16,7 @@ function Main() {
       if (data.error) {
         db._newsTitleError = data.error;
       } else {
+        db._newsTitleError = undefined;
         db._newsTitle = data;
       }
     });
@@ -25,12 +29,16 @@ function Main() {
       ) : db._newsTitleError ? (
         "error"
       ) : (
-        <div>
+        <div className="containerCSS">
           {db._newsTitle.map((title, i) => {
-            console.log(title);
             return (
-              <div key={i}>
-                <h3>{title}</h3>
+              <div key={i} className={`m-2 ${i === 0 ? "newHeaderCSS" : "newContainerCSS"}`}>
+                <div className="card">
+                  <div className="imageCSS">Image</div>
+                  <div className="p-2">
+                    <h5>{title}</h5>
+                  </div>
+                </div>
               </div>
             );
           })}
