@@ -32,8 +32,53 @@ function Article() {
       ) : db._articleReadingError ? (
         "error"
       ) : (
-        <div className="px-3">
-          <h3>{db._articleReading[0].title}</h3>
+        <div className="px-4">
+          <div>
+            <h3>{db._articleReading[0].title}</h3>
+          </div>
+          <hr />
+          <div>
+            {db._articleReading[0].body.map((section, i) => {
+              const { type, model } = section;
+
+              if (type === "heading") {
+                return <h5 key={i}>{model.text}</h5>;
+              }
+              if (type === "paragraph") {
+                return <p key={i}>{model.text}</p>;
+              }
+              if (type === "image") {
+                return (
+                  <div className="my-2" key={i}>
+                    <img
+                      src={model.url}
+                      alt={model.alt}
+                      styles={{ with: [section.width], height: section.height }}
+                    />
+                  </div>
+                );
+              }
+              if (type === "list") {
+                if (model.type === "unordered") {
+                  return (
+                    <ul key={i}>
+                      {model.items.map((element) => {
+                        return <li key={element}>{element}</li>;
+                      })}
+                    </ul>
+                  );
+                } else {
+                  return (
+                    <ol key={i}>
+                      {model.items.map((element) => {
+                        return <li key={element}>{element}</li>;
+                      })}
+                    </ol>
+                  );
+                }
+              }
+            })}
+          </div>
         </div>
       )}
     </div>

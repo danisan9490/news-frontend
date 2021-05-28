@@ -30,7 +30,7 @@ function App() {
             <Route path="/article/:id" component={Article} />
           </Switch>
         </div>
-        <footer class="p-5 bg-dark text-white">Footer</footer>
+        <footer className="p-5 bg-dark text-white">Footer</footer>
       </div>
     </BrowserRouter>
   );
