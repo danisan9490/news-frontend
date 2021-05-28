@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 //UseCases
 import getIndividualArticles from "../../useCases/getIndividualNews";
+import getPreviousArticle from "../../useCases/getPreviousArticle";
+import getNextArticle from "../../useCases/getNextArticle";
 //Helpers
 import { useHistory } from "react-router-dom";
 import db from "../../POJO/POJO";
@@ -21,9 +23,15 @@ function Article() {
         db._articleReading = data;
       }
     });
-  }, [articleId]);
 
-  // console.log(db._articleReading);
+    // preload next and previous articles
+    getNextArticle(articleId).then((data) => {
+      console.log(data);
+    });
+    getPreviousArticle(articleId).then((data) => {
+      console.log(data);
+    });
+  }, [articleId]);
 
   return (
     <div>

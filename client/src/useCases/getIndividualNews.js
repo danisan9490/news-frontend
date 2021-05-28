@@ -7,7 +7,6 @@ import article5 from "../DB/article-5.json";
 async function getIndividualArticles(articleId) {
   const dbResponse = [article1, article2, article3, article4, article5];
   try {
-    console.log(articleId);
     const article = await dbResponse.filter((individualNew) => individualNew.id === articleId);
     return article;
   } catch (error) {
