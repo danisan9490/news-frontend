@@ -8,7 +8,10 @@ async function getNewsTitles(category) {
   const dbResponse = [article1, article2, article3, article4, article5];
   try {
     const newsTitles = await dbResponse.map((individualNew) => {
-      return individualNew.title;
+      return {
+        id: individualNew.id,
+        title: individualNew.title,
+      };
     });
     return newsTitles;
   } catch (error) {

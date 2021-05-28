@@ -1,5 +1,7 @@
+//Components
 import Article from "./components/Article/Article";
 import Main from "./components/Main/Main";
+//Helpers
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
 function App() {
