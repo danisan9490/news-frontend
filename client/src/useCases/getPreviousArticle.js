@@ -9,6 +9,7 @@ async function getPreviousArticle(articleId) {
   const articleNumberPosition = Number(articleId.replace(/^\D+/g, "")) - 1;
 
   try {
+    // eslint-disable-next-line
     const prevArticle = await dbResponse.filter((individualNew, i) => {
       if (articleNumberPosition - 1 === i) return individualNew;
       if (articleNumberPosition === 0) {

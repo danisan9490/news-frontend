@@ -54,6 +54,10 @@ function Article() {
     });
   }, [articleId]);
 
+  function voteArticle(articleId) {
+    console.log(articleId);
+  }
+
   return (
     <div>
       {db._articleReading.length === 0 && !db._articleReadingError ? (
@@ -68,46 +72,49 @@ function Article() {
             </div>
             <hr />
             <div>
-              {db._articleReading[0].body.map((section, i) => {
-                const { type, model } = section;
+              {
+                // eslint-disable-next-line
+                db._articleReading[0].body.map((section, i) => {
+                  const { type, model } = section;
 
-                if (type === "heading") {
-                  return <h5 key={i}>{model.text}</h5>;
-                }
-                if (type === "paragraph") {
-                  return <p key={i}>{model.text}</p>;
-                }
-                if (type === "image") {
-                  return (
-                    <div className="my-2" key={i}>
-                      <img
-                        src={model.url}
-                        alt={model.alt}
-                        styles={{ with: [section.width], height: section.height }}
-                      />
-                    </div>
-                  );
-                }
-                if (type === "list") {
-                  if (model.type === "unordered") {
+                  if (type === "heading") {
+                    return <h5 key={i}>{model.text}</h5>;
+                  }
+                  if (type === "paragraph") {
+                    return <p key={i}>{model.text}</p>;
+                  }
+                  if (type === "image") {
                     return (
-                      <ul key={i}>
-                        {model.items.map((element) => {
-                          return <li key={element}>{element}</li>;
-                        })}
-                      </ul>
-                    );
-                  } else {
-                    return (
-                      <ol key={i}>
-                        {model.items.map((element) => {
-                          return <li key={element}>{element}</li>;
-                        })}
-                      </ol>
+                      <div className="my-2" key={i}>
+                        <img
+                          src={model.url}
+                          alt={model.alt}
+                          styles={{ with: [section.width], height: section.height }}
+                        />
+                      </div>
                     );
                   }
-                }
-              })}
+                  if (type === "list") {
+                    if (model.type === "unordered") {
+                      return (
+                        <ul key={i}>
+                          {model.items.map((element) => {
+                            return <li key={element}>{element}</li>;
+                          })}
+                        </ul>
+                      );
+                    } else {
+                      return (
+                        <ol key={i}>
+                          {model.items.map((element) => {
+                            return <li key={element}>{element}</li>;
+                          })}
+                        </ol>
+                      );
+                    }
+                  }
+                })
+              }
             </div>
           </div>
           <hr />
@@ -115,7 +122,9 @@ function Article() {
             <Link to={`/article/${prevArticleId}`} onClick={() => setArticleId(prevArticleId)}>
               <button className="btn btn-primary">Previous</button>
             </Link>
-            <button className="btn btn-success">vote</button>
+            <button className="btn btn-success" onClick={() => voteArticle(articleId)}>
+              Vote
+            </button>
             <Link to={`/article/${nextArticleId}`} onClick={() => setArticleId(nextArticleId)}>
               <button className="btn btn-primary">Next</button>
             </Link>
