@@ -10,14 +10,20 @@ import "./rankingStars.css";
 function RankingStars() {
   useObserver(db);
 
-  function voteArticle(articleId) {
-    postRanking(articleId).then((data) => (db._ranking = data));
+  function voteArticle(e) {
+    const { name, value } = e.target;
+
+    postRanking(name, value).then((data) => (db._ranking = data));
   }
   return (
     <div>
-      <button className="btn btn-success" onClick={() => voteArticle(db._articleReadingID)}>
-        Vote
-      </button>
+      <ul className="ratings">
+        <li className="star" value="5" name={db._articleReadingID} onClick={(e) => voteArticle(e)}></li>
+        <li className="star" value="4" name={db._articleReadingID} onClick={(e) => voteArticle(e)}></li>
+        <li className="star" value="3" name={db._articleReadingID} onClick={(e) => voteArticle(e)}></li>
+        <li className="star" value="2" name={db._articleReadingID} onClick={(e) => voteArticle(e)}></li>
+        <li className="star" value="1" name={db._articleReadingID} onClick={(e) => voteArticle(e)}></li>
+      </ul>
     </div>
   );
 }
