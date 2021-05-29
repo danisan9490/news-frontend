@@ -12,7 +12,9 @@ function RankingStars({ articleId }) {
 
   function voteArticle(e) {
     const { value } = e.target;
-    postRanking(articleId, value).then((data) => (db._ranking = data));
+    postRanking(articleId, value).then((data) => {
+      db._ranking = data;
+    });
   }
   return (
     <div>

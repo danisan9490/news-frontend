@@ -22,7 +22,6 @@ function Main() {
       }
     });
   }, []);
-
   return (
     <div>
       {db._newsTitle.length === 0 && !db._newsTitleError ? (
@@ -38,22 +37,20 @@ function Main() {
                   <div className="card titleCSS">
                     <div className="imageCSS">Image</div>
                     <div className="p-2 row">
-                      <div className="col-9">
+                      <div className="col-8">
                         <h5>{article.title}</h5>
                       </div>
-                      {/* <div className="col-3 text-end">
+                      <div className="col-4 text-end">
                         {db._ranking[article.id] ? (
-                          db._ranking[article.id] === 1 ? (
-                            <h5 className="text-success">{`${db._ranking[article.id]} Vote`}</h5>
-                          ) : (
-                            <h5 className="text-success">{`${db._ranking[article.id]} Votes`}</h5>
-                          )
+                          <div>
+                            <h5>Rating: {db._ranking[article.id].averageStars}&#9733;</h5>
+                          </div>
                         ) : db._rankingError ? (
                           "Error"
                         ) : (
-                          <h5 className="text-secondary">0 Votes</h5>
+                          <h5 className="text-secondary">No Ratings</h5>
                         )}
-                      </div> */}
+                      </div>
                     </div>
                   </div>
                 </Link>

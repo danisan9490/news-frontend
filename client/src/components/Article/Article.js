@@ -66,22 +66,20 @@ function Article() {
         <div className="px-4">
           <div>
             <div className="row">
-              <div className="col-9">
+              <div className="col-8">
                 <h3>{db._articleReading[0].title}</h3>
               </div>
-              {/* <div className="col-3 text-end">
+              <div className="col-4 text-end">
                 {db._ranking[articleId] ? (
-                  db._ranking[articleId] === 1 ? (
-                    <h3 className="text-success">{`${db._ranking[articleId]} Vote`}</h3>
-                  ) : (
-                    <h3 className="text-success">{`${db._ranking[articleId]} Votes`}</h3>
-                  )
+                  <div>
+                    <h3>Rating: {db._ranking[articleId].averageStars}&#9733;</h3>
+                  </div>
                 ) : db._rankingError ? (
                   "Error"
                 ) : (
-                  <h3 className="text-secondary">0 Votes</h3>
+                  <h3 className="text-secondary">No Ratings</h3>
                 )}
-              </div> */}
+              </div>
             </div>
             <hr />
             <div>
