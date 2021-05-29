@@ -7,22 +7,21 @@ import useObserver from "pojo-observer";
 //Styles
 import "./rankingStars.css";
 
-function RankingStars() {
+function RankingStars({ articleId }) {
   useObserver(db);
 
   function voteArticle(e) {
-    const { name, value } = e.target;
-
-    postRanking(name, value).then((data) => (db._ranking = data));
+    const { value } = e.target;
+    postRanking(articleId, value).then((data) => (db._ranking = data));
   }
   return (
     <div>
       <ul className="ratings">
-        <li className="star" value="5" name={db._articleReadingID} onClick={(e) => voteArticle(e)}></li>
-        <li className="star" value="4" name={db._articleReadingID} onClick={(e) => voteArticle(e)}></li>
-        <li className="star" value="3" name={db._articleReadingID} onClick={(e) => voteArticle(e)}></li>
-        <li className="star" value="2" name={db._articleReadingID} onClick={(e) => voteArticle(e)}></li>
-        <li className="star" value="1" name={db._articleReadingID} onClick={(e) => voteArticle(e)}></li>
+        <li className="star" value="5" onClick={(e) => voteArticle(e)}></li>
+        <li className="star" value="4" onClick={(e) => voteArticle(e)}></li>
+        <li className="star" value="3" onClick={(e) => voteArticle(e)}></li>
+        <li className="star" value="2" onClick={(e) => voteArticle(e)}></li>
+        <li className="star" value="1" onClick={(e) => voteArticle(e)}></li>
       </ul>
     </div>
   );

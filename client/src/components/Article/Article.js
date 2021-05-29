@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+//Components
+import RankingStars from "../RankingStars.js/RankingStars";
 //UseCases
 import getIndividualArticles from "../../useCases/getIndividualArticles";
 import getPreviousArticle from "../../useCases/getPreviousArticle";
 import getNextArticle from "../../useCases/getNextArticle";
-import postRanking from "../../useCases/postRanking";
 //Helpers
 import { Link, useHistory } from "react-router-dom";
 import db from "../../POJO/POJO";
@@ -55,10 +56,6 @@ function Article() {
     });
   }, [articleId]);
 
-  function voteArticle(articleId) {
-    postRanking(articleId).then((data) => (db._ranking = data));
-  }
-
   return (
     <div>
       {db._articleReading.length === 0 && !db._articleReadingError ? (
@@ -68,8 +65,23 @@ function Article() {
       ) : (
         <div className="px-4">
           <div>
-            <div>
-              <h3>{db._articleReading[0].title}</h3>
+            <div className="row">
+              <div className="col-9">
+                <h3>{db._articleReading[0].title}</h3>
+              </div>
+              {/* <div className="col-3 text-end">
+                {db._ranking[articleId] ? (
+                  db._ranking[articleId] === 1 ? (
+                    <h3 className="text-success">{`${db._ranking[articleId]} Vote`}</h3>
+                  ) : (
+                    <h3 className="text-success">{`${db._ranking[articleId]} Votes`}</h3>
+                  )
+                ) : db._rankingError ? (
+                  "Error"
+                ) : (
+                  <h3 className="text-secondary">0 Votes</h3>
+                )}
+              </div> */}
             </div>
             <hr />
             <div>
@@ -123,9 +135,7 @@ function Article() {
             <Link to={`/article/${prevArticleId}`} onClick={() => setArticleId(prevArticleId)}>
               <button className="btn btn-primary">Previous</button>
             </Link>
-            <button className="btn btn-success" onClick={() => voteArticle(articleId)}>
-              Vote
-            </button>
+            <RankingStars articleId={articleId} />
             <Link to={`/article/${nextArticleId}`} onClick={() => setArticleId(nextArticleId)}>
               <button className="btn btn-primary">Next</button>
             </Link>

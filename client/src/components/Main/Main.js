@@ -37,8 +37,23 @@ function Main() {
                 <Link to={`/article/${article.id}`} style={{ textDecoration: "none" }}>
                   <div className="card titleCSS">
                     <div className="imageCSS">Image</div>
-                    <div className="p-2">
-                      <h5>{article.title}</h5>
+                    <div className="p-2 row">
+                      <div className="col-9">
+                        <h5>{article.title}</h5>
+                      </div>
+                      {/* <div className="col-3 text-end">
+                        {db._ranking[article.id] ? (
+                          db._ranking[article.id] === 1 ? (
+                            <h5 className="text-success">{`${db._ranking[article.id]} Vote`}</h5>
+                          ) : (
+                            <h5 className="text-success">{`${db._ranking[article.id]} Votes`}</h5>
+                          )
+                        ) : db._rankingError ? (
+                          "Error"
+                        ) : (
+                          <h5 className="text-secondary">0 Votes</h5>
+                        )}
+                      </div> */}
                     </div>
                   </div>
                 </Link>
