@@ -128,12 +128,16 @@ function Article() {
               }
             </div>
           </div>
+          <br />
+          <div>
+            <h5>Rate this article</h5>
+            <RankingStars articleId={articleId} />
+          </div>
           <hr />
           <div className="d-flex justify-content-between">
             <Link to={`/article/${prevArticleId}`} onClick={() => setArticleId(prevArticleId)}>
               <button className="btn btn-primary">Previous</button>
             </Link>
-            <RankingStars articleId={articleId} />
             <Link to={`/article/${nextArticleId}`} onClick={() => setArticleId(nextArticleId)}>
               <button className="btn btn-primary">Next</button>
             </Link>
