@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import getIndividualArticles from "../../useCases/getIndividualArticles";
 import getPreviousArticle from "../../useCases/getPreviousArticle";
 import getNextArticle from "../../useCases/getNextArticle";
+import postRanking from "../../useCases/postRanking";
 //Helpers
 import { Link, useHistory } from "react-router-dom";
 import db from "../../POJO/POJO";
@@ -55,7 +56,7 @@ function Article() {
   }, [articleId]);
 
   function voteArticle(articleId) {
-    console.log(articleId);
+    postRanking(articleId).then((data) => (db._ranking = data));
   }
 
   return (

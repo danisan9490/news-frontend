@@ -12,6 +12,9 @@ class Db {
 
     this._prevArticle = [];
     this._prevArticleError = undefined;
+
+    this._ranking = [];
+    this._rankingError = undefined;
   }
 
   handlePreloadedArticles(articleID) {
