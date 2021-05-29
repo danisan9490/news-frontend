@@ -98,6 +98,7 @@ function Article() {
                     return (
                       <div className="my-2" key={i}>
                         <img
+                          className="img-fluid"
                           src={model.url}
                           alt={model.alt}
                           styles={{ with: [section.width], height: section.height }}
